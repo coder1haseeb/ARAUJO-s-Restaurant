@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    .modal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000; /* Ensure modal is above other elements */
+    }
+
+    .hidden {
+      display: none;
+    }
+    .hero_image {
+      /* background: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fstock.adobe.com%2Fsearch%3Fk%3Drestaurant%2Bbackground&psig=AOvVaw2vdh6BXDevu3P5OzyJ-o4q&ust=1727533556756000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLiM1Jmq44gDFQAAAAAdAAAAABAJ")    } */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./assets/hero.jpeg');
+    }
+  </style>
+  <body class="font-poppins">
+    <div class="px-28 xl:px-14 lg:px-7 sm:px-4 pb-8 pt-1">
+      <div
+        class="bg-white rounded-full flex items-center justify-between shadow-md py-5 px-6 md:py-2"
+      >
+        <div class="flex items-center justify-center">
+          <a href="./index.html">
+            <img
+              src="./assets/log0.png"
+              alt="logo_image"
+              class="h-[90px] lg:h-[80px] lg:w-[80px]"
+            />
+          </a>
+        </div>
+        <div class="md:hidden">
+          <a
+            href="./index.html"
+            class="mx-3 lg:mx-2 text-base font-medium hover:text-reddish duration-300 hover:duration-300"
+            >Home</a
+          >
+          <a
+            href="./menu.html"
+            class="mx-3 lg:mx-2 text-base font-medium hover:text-reddish duration-300 hover:duration-300"
+            >Menu</a
+          >
+          <a
+            href="./location.html"
+            class="mx-3 lg:mx-2 text-base font-medium hover:text-reddish duration-300 hover:duration-300"
+            >Locations</a
+          >
+          <a
+            href="./a-tacos-lover-story.html"
+            class="mx-3 lg:mx-2 text-base font-medium hover:text-reddish duration-300 hover:duration-300"
+            >A TAC0-lovers story</a
+          >
+        </div>
+        <div class="flex items-center justify-end md:hidden">
+          <a
+            target="_blank"
+            href="https://order.online/business/araujos-mexican-grill-312560"
+            class="bg-reddish text-white text-base font-medium px-4 py-2 rounded-full ml-6"
+            >Order Now</a
+          >
+        </div>
+        <div onclick="handleOpenMenu()" id="hamburger" class="md:block hidden ">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-menu"
+          >
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </div>
+        <div onclick="handleCloseMenu()" id="cross" class="hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-x"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </div>
+      </div>
+      <div id="mobileNav" class="shadow-xl p-5 hidden rounded-lg">
+        <div class="flex flex-col">
+          <a
+            href="./index.html"
+            class="mx-3 mt-2 lg:mx-2 text-base font-medium hover:text-reddish duration-300 hover:duration-300"
+            >Home</a
+          >
+          <a
+            href="./menu.html"
+            class="mx-3 mt-2 lg:mx-2 text-base font-medium hover:text-reddish duration-300 hover:duration-300"
+            >Menu</a
+          >
+          <a
+            href="./location.html"
+            class="mx-3 mt-2 lg:mx-2 text-base font-medium hover:text-reddish duration-300 hover:duration-300"
+            >Locations</a
+          >
+          <a
+            href="./a-tacos-lover-story.html"
+            class="mx-3 mt-2 lg:mx-2 text-base font-medium hover:text-reddish duration-300 hover:duration-300"
+            >A TAC0-lovers story</a
+          >
+        </div>
+        <div class="flex mt-2 items-center justify-start">
+          <a
+            target="_blank"
+            href="https://order.online/business/araujos-mexican-grill-312560"
+            class="bg-reddish text-white text-base font-medium px-4 py-2 rounded-full"
+            >Order Now</a
+          >
+        </div>
+      </div>
+      <!-- <div class="flex">
+        <div class="w-1/2 mt-24">
+          <h1 class="text-6xl text-dark font-bold">
+            Welcome to Our
+            <span class="text-reddish">ARAUJO's Mexican Grill</span>
+          </h1>
+          <p class="text-lg text-light mt-6 w-4/5">
+            Savor the vibrant flavors of Mexico, made with love and the freshest
+            ingredients. At Araujo’s, every bite is a fiesta for your taste
+            buds!
+          </p>
+          <div class="mt-8">
+            <a
+              target="_blank"
+              href="https://order.online/business/araujos-mexican-grill-312560"
+              class="bg-green-500 text-white text-base font-medium px-4 py-2 rounded-full"
+              >Visit Menu</a
+            >
+            <a
+              target="_blank"
+              href="https://order.online/business/araujos-mexican-grill-312560"
+              class="bg-reddish text-white text-base font-medium px-4 py-2 rounded-full ml-6"
+              >Order Now</a
+            >
+          </div>
+        </div>
+        <div class="w-1/2 flex items-center justify-end">
+          <img src="/src/assets/hero_img_2_1.png" class="w-3/4 mt-10" alt="" />
+        </div>
+      </div> -->
+    </div>
+    <div class="hero_image h-[300px] lg:h-auto lg:p-8 md:p-5 mx-28 xl:mx-14 lg:mx-7 sm:mx-4 p-5 rounded-3xl">
+        <h1 class="text-4xl text-white font-bold md:text-3xl">
+            Araujo’s Mexican Grill 
+        </h1>
+        <div class="flex items-center  mt-5 md:mt-3">
+
+            <h3 class="text-white text-xl w-1/2 md:w-full lg:w-3/4">
+                Experience the bold flavors of Mexico, crafted with passion and served with pride. Taste the tradition at Araujo’s Mexican Grill today!
+            </h3>
+        </div>
+        <div class="">
+            <div class="mt-8 md:mt-5">
+                <a
+                  href="./menu.html"
+                  class="bg-green-500 text-white text-base font-medium px-4 py-2 rounded-full"
+                  >Visit Menu</a
+                >
+                <a
+                  target="_blank"
+                  href="https://order.online/business/araujos-mexican-grill-312560"
+                  class="bg-reddish text-white text-base font-medium px-4 py-2 rounded-full ml-6 sm:ml-2"
+                  >Order Now</a
+                >
+              </div>
+    
+        </div>
+    </div>
+    <div class="my-12 lg:my-8">
+      <div class="flex items-center justify-center">
+        <img src="./assets/icon.svg" alt="icon" class="mr-2" />
+        <h4 class="font-lobster font-semibold text-xl text-reddish">
+          Restaurant Food Menu
+        </h4>
+      </div>
+      <div class="text-4xl text-center lg:text-3xl my-4 sm:text-2xl lg:my-2 lg:px-7 sm:px-4 font-bold">
+        Our Restaurant <span class="font-lobster text-reddish">Food Menu</span>
+      </div>
+      <div class="flex items-center justify-center">
+        <div class="text-base text-light w-[600px] md:w-full lg:px-7 sm:px-4 text-center">
+          "Savor the vibrant flavors of Mexico, made with love and the freshest
+          ingredients. At Araujo’s, every bite is a fiesta for your taste buds!"
+        </div>
+      </div>
+      <div class="px-28 xl:px-14 lg:px-7 sm:px-4">
+        <div class="flex items-center justify-center my-10 lg:my-8 md:my-6">
+          <div class="w-2/5 h-px bg-reddish"></div>
+          <h2 class="mx-4 text-2xl w-[200px] sm:!w-[250px] sm:text-xl text-center font-bold text-dark">
+            Food Items
+          </h2>
+          <div class="w-2/5 h-px bg-reddish"></div>
+        </div>
+        <!-- <div class="grid grid-cols-2 gap-8"> -->
+        <div id="menu-container" class="grid grid-cols-2 gap-8"></div>
+        <div class="flex items-center justify-center my-12">
+          <div class="w-2/5 h-px bg-reddish"></div>
+          <h2 class="mx-4 text-2xl w-[200px] sm:!w-[250px] sm:text-xl text-center font-bold text-dark">
+            Our Drinks
+          </h2>
+          <div class="w-2/5 h-px bg-reddish"></div>
+        </div>
+        <div id="drink-container" class="grid grid-cols-2 gap-8"></div>
+      </div>
+    </div>
+    <div class="px-28 xl:px-14 lg:px-7 sm:px-4 my-16">
+        <h3 class="text-4xl text-dark text-center font-semibold">
+            <span class="text-reddish font-lobster">ARAUJO's</span> Gallery
+        </h3>
+        <div class="my-6">
+            <div class="grid grid-cols-3 gap-4 sm:grid-cols-2 md:grid-cols-2 xs:grid-cols-1">
+                <div>
+                  <img class="object-cover object-center w-full h-80 lg:h-60 xs:h-80 max-w-full rounded-lg"
+                    src="https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1470&amp;q=80"
+                    alt="gallery-photo" />
+                </div>
+                <div>
+                  <img class="object-cover object-center w-full h-80 lg:h-60 xs:h-80 max-w-full rounded-lg"
+                    src="https://images.unsplash.com/photo-1432462770865-65b70566d673?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
+                    alt="gallery-photo" />
+                </div>
+                <div>
+                  <img class="object-cover object-center w-full h-80 lg:h-60 xs:h-80 max-w-full rounded-lg"
+                    src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2560&amp;q=80"
+                    alt="gallery-photo" />
+                </div>
+                <div>
+                  <img class="object-cover object-center w-full h-80 lg:h-60 xs:h-80 max-w-full rounded-lg"
+                    src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2940&amp;q=80"
+                    alt="gallery-photo" />
+                </div>
+                <div>
+                  <img class="object-cover object-center w-full h-80 lg:h-60 xs:h-80 max-w-full rounded-lg"
+                    src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2762&amp;q=80"
+                    alt="gallery-photo" />
+                </div>
+                <div>
+                  <img class="object-cover object-center w-full h-80 lg:h-60 xs:h-80 max-w-full rounded-lg"
+                    src="https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2832&amp;q=80"
+                    alt="gallery-photo" />
+                </div>
+                <div>
+                  <img class="object-cover object-center w-full h-80 lg:h-60 xs:h-80 max-w-full rounded-lg"
+                    src="https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog5.jpg" alt="gallery-photo" />
+                </div>
+                <div>
+                  <img class="object-cover object-center w-full h-80 lg:h-60 xs:h-80 max-w-full rounded-lg"
+                    src="https://material-taillwind-pro-ct-tailwind-team.vercel.app/img/content2.jpg" alt="gallery-photo" />
+                </div>
+                <div>
+                  <img class="object-cover object-center w-full h-80 lg:h-60 xs:h-80 max-w-full rounded-lg"
+                    src="https://images.unsplash.com/photo-1620064916958-605375619af8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1493&amp;q=80"
+                    alt="gallery-photo" />
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="bg-reddish">
+        <footer
+          class="py-3 text-white px-28 xl:px-14 lg:px-7 sm:px-4 flex items-center justify-between lg:!grid lg:!grid-cols-4"
+        >
+          <p class="lg:col-span-3 md:col-span-4">
+            &copy; <span id="year"></span> Araujo’s Mexican Grill. All rights
+            reserved.
+          </p>
+          <div class="flex lg:col-span-1 md:col-span-4 lg:grid lg:grid-cols-3 md:flex md:mt-4">
+            <a class="mx-4 md:!mr-8 md:ml-0 md:flex md:justify-start" href="https://www.facebook.com/ElPaisaTaqueriaAraujo/">
+              <img src="./assets/facebook.svg" alt="" />
+            </a>
+            <a class="mx-4 md:!mr-8 md:ml-0 md:flex md:justify-start" href="mailto:amg.elpaisa@gmail.com">
+              <img src="./assets/mail.svg" alt="" />
+            </a>
+            
+            <a class="mx-4 md:!mr-8 md:ml-0 md:flex md:justify-start" href="https://www.yelp.com/biz/araujos-mexican-grill-san-jose-2">
+              <img src="./assets/yelp.svg" class="text-white" alt="" />
+            </a>
+          </div>
+        </footer>
+      </div>
+    <script>
+       const hamburger = document.getElementById('hamburger')
+      const cross = document.getElementById('cross')
+      const mobileNav = document.getElementById('mobileNav')
+
+      // Initial check for screen size
+      if (window.innerWidth <= 786) {
+        hamburger.classList.remove('hidden')
+      } else {
+        hamburger.classList.add('hidden')
+      }
+
+      // Add event listener for window resize
+      window.addEventListener('resize', function () {
+        if (window.innerWidth <= 786) {
+          hamburger.classList.remove('hidden')
+        } else {
+          hamburger.classList.add('hidden')
+        }
+      })
+
+      function handleOpenMenu() {
+        hamburger.classList.add('hidden')
+        cross.classList.remove('hidden')
+        mobileNav.classList.remove('hidden')
+      }
+
+      function handleCloseMenu() {
+        hamburger.classList.remove('hidden')
+        cross.classList.add('hidden')
+        mobileNav.classList.add('hidden')
+      }
+      const menuItems = [
+        {
+          name: "Salsa Ranchera",
+          description: "Roasted tomatoes",
+          image: "./assets/Salsa-Ranchera_MG_1845.jpg",
+        },
+        {
+          name: "Bistec Ranchero",
+          image: "./assets/Bistec-ranchero_MG_0811.jpg",
+        },
+        { name: "Sopes", image: "./assets/Sope_0883.png" },
+        {
+          name: "Nachos",
+          description:
+            "Homemade chips, refried beans, meat, Monterey cheese, pico de gallo, sour cream, avocado, and jalapenos.",
+          image: "./assets/Nachos-IMG_0881.png",
+        },
+        {
+          name: "Super Taco",
+          description:
+            "Super Taco – Two tortillas, meat, cheese, beans, pico de gallo, sour cream and avocado",
+          image: "./assets/SP-TACO-_MG_0954.png",
+        },
+        {
+          name: "Molcajetes Mixtos",
+          description: "Available in Story Rd only",
+          image: "./assets/Molcajete-Mixto_MG_1029.png",
+        },
+        {
+          name: "Tortas",
+          description:
+            "Regular Tortas – Meat, refried beans, tomato, lettuce, panela cheese, avocado, sour cream and jalapenos. <br /> <br /> Torta Cubana - Meat, refried beans, milanesa, ham, pork head, cheese, tomato, lettuce, panela cheese, avocado, sour cream and jalapenos.",
+          image: "./assets/Torta-IMG_1091.png",
+        },
+        {
+          name: "Mulitas",
+          description: "Two handmade tortillas, cheese and meat.",
+          image: "./assets/IMG_1124_Mulitas.png",
+        },
+        {
+          name: "Vampiros",
+          description: "Tostadas, meat, whole beans, onion and cilantro.",
+          image: "./assets/Vampiro-IMG_1033.png",
+        },
+        {
+          name: "Burrito",
+          description:
+            "Regular Burrito – Cheese, meat, whole beans, and Salsa. <br /> <br />  Super Burrito – Cheese, meat, whole beans, rice, pico de gallo, sour cream, avocado, and salsa.",
+          image: "./assets/03_IMG_0854-SP-burrito.png",
+        },
+        {
+          name: "Tacos",
+          description:
+            "Regular Taco – One handmade tortilla, meat, onion and cilantro",
+          image: "./assets/IMG_0768-tacos.png",
+        },
+      ];
+
+      const drinkItems = [
+        {
+          name: "Agua de Horchata",
+          image: "./assets/Agua-Horchata_MG_2184.png",
+        },
+        { name: "Aguas Frescas", image: "./assets/Agua-Mango_MG_2099.png" },
+      ];
+
+      // Function to render menu items
+      const renderMenu = () => {
+        const container = document.getElementById("menu-container");
+        const drinkContainer = document.getElementById("drink-container");
+
+        menuItems.forEach((item) => {
+          // Set a minor description if none exists
+          const description =
+            item.description || "Delicious and fresh Mexican cuisine.";
+
+          // Check if the description is longer than 37 characters
+          const isLongDescription = description.length > 37;
+          const shortDescription = isLongDescription
+            ? description.slice(0, 37) +
+              `... <span class="text-reddish cursor-pointer" onclick="showModal(\'${item.name}\', \'${description}\')">more</span>`
+            : description;
+
+          // Template for each menu item
+          container.innerHTML += `
+      <div class="bg-box_bg grid rounded-2xl gap-4 grid-cols-7 sm:col-span-2 xl:grid-cols-8 sm:grid-cols-7 ">
+        <div
+          class="bg-img_light_bg rounded-2xl hover:bg-img_dark_bg col-span-2 xl:col-span-3 xs:col-span-3 xxs:col-span-7 lg:col-span-8 sm:col-span-2 hover:duration-300 duration-300 cursor-pointer"
+        >
+          <img src=${item.image} class="h-full w-full rounded-2xl" alt="${item.name}" />
+        </div>
+        <div class="p-5 col-span-5 xl:pl-0 xl:col-span-5 sm:col-span-5 xs:col-span-4 xxs:col-span-7 lg:col-span-8 lg:p-4">
+          <h3 class="text-xl font-semibold hover:text-reddish hover:duration-300 cursor-pointer duration-300">
+            ${item.name}
+          </h3>
+          <p class="my-3 text-light h-5 overflow-hidden">${shortDescription}</p>
+          <div class="flex items-center">
+            <div class="text-light flex items-center">
+              <img src="./assets/knife-fork-and-plate-svgrepo-com.svg" class="text-light mr-3" alt="" />
+              <p class="text-sm">
+                In <span class="text-balance font-medium">FOOD</span>
+              </p>
+            </div>
+            <a target="_blank" href="https://order.online/business/araujos-mexican-grill-312560" class="bg-reddish text-white text-base font-medium px-4 py-2 rounded-full ml-6 ">Order Now</a>
+          </div>
+        </div>
+      </div>`;
+        });
+        drinkItems.forEach((item) => {
+          // Set a minor description if none exists
+          const description =
+            item.description || "Delicious and fresh Mexican cuisine.";
+
+          // Check if the description is longer than 37 characters
+          const isLongDescription = description.length > 37;
+          const shortDescription = isLongDescription
+            ? description.slice(0, 37) +
+              `... <span class="text-reddish cursor-pointer" onclick="showModal(\'${item.name}\', \'${description}\')">more</span>`
+            : description;
+
+          // Template for each menu item
+          drinkContainer.innerHTML += `
+      <div class="bg-box_bg grid rounded-2xl gap-4 grid-cols-7 sm:col-span-2 xl:grid-cols-8 sm:grid-cols-7 ">
+        <div
+          class="bg-img_light_bg rounded-2xl hover:bg-img_dark_bg col-span-2 xl:col-span-3 xs:col-span-3 xxs:col-span-7 lg:col-span-8 sm:col-span-2 hover:duration-300 duration-300 cursor-pointer"
+        >
+          <img src=${item.image} class="h-full w-full rounded-2xl" alt="${item.name}" />
+        </div>
+        <div class="p-5 col-span-5 xl:pl-0 xl:col-span-5 sm:col-span-5 xs:col-span-4 xxs:col-span-7 lg:col-span-8 lg:p-4">
+          <h3 class="text-xl font-semibold hover:text-reddish hover:duration-300 cursor-pointer duration-300">
+            ${item.name}
+          </h3>
+          <p class="my-3 text-light h-5 overflow-hidden">${shortDescription}</p>
+          <div class="flex items-center">
+            <div class="text-light flex items-center">
+              <img src="./assets/knife-fork-and-plate-svgrepo-com.svg" class="text-light mr-3" alt="" />
+              <p class="text-sm">
+                In <span class="text-balance font-medium">FOOD</span>
+              </p>
+            </div>
+            <a target="_blank" href="https://order.online/business/araujos-mexican-grill-312560" class="bg-reddish text-white text-base font-medium px-4 py-2 rounded-full ml-6 ">Order Now</a>
+          </div>
+        </div>
+      </div>`;
+        });
+      };
+
+      // Function to show the modal
+      const showModal = (itemName, description) => {
+        const modal = document.getElementById("modal");
+        const modalTitle = document.getElementById("modal-title");
+        const modalDescription = document.getElementById("modal-description");
+
+        modalTitle.innerText = itemName;
+        modalDescription.innerHTML = description; // Use innerHTML to allow HTML content
+        modal.classList.remove("hidden"); // Show the modal
+
+        // Close modal on button click
+        document.getElementById("close-modal").onclick = () => {
+          modal.classList.add("hidden"); // Hide the modal
+        };
+        document.getElementById("modal").onclick = () => {
+          modal.classList.add("hidden"); // Hide the modal
+        };
+      };
+
+      // Render the menu items on page load
+      renderMenu();
+    </script>
+    <!-- Modal Structure -->
+    <div
+      id="modal"
+      class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg w-[450px] md:!w-auto sm:!mx-4">
+        <h2 id="modal-title" class="text-xl font-bold mb-4"></h2>
+        <p id="modal-description" class="text-base"></p>
+        <button
+          id="close-modal"
+          class="bg-reddish text-white px-4 py-2 rounded-full mt-4"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
